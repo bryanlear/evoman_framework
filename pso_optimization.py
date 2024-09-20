@@ -98,8 +98,3 @@ print(f"Best solution found with fitness: {global_best_fitness}")
 np.savetxt(f"{experiment_name}/final_best.txt", global_best_position)
 
 
-
-
-
-
-git push origin Evoman2024
