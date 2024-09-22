@@ -23,8 +23,8 @@ env = Environment(experiment_name=experiment_name,
                   visuals=False)
 
 # PSO parameters
-n_particles = 50   # Particles (population size)
-n_iterations = 50  # Iterations (generations)
+n_particles = 100   # Particles (population size)
+n_iterations = 30  # Iterations (generations)
 w = 0.5            # Inertia weight
 c1 = 1.5           # Cognitive (influence personal best)
 c2 = 1.5           # Social (influence global best (swarm))
@@ -87,7 +87,13 @@ for iteration in range(n_iterations):
         if fitness_values[i] > global_best_fitness:
             global_best_fitness = fitness_values[i]
             global_best_position = particles[i]
+    
+    
+    mean_fitness = np.mean(fitness_values)
+    std_fitness = np.std(fitness_values)
 
+    # Print the mean and standard deviation for the current generation
+    print(f"Iteration {iteration + 1}/{n_iterations} - Mean fitness: {mean_fitness}, Std Dev: {std_fitness}")
     # Save best solution so far
     np.savetxt(f"{experiment_name}/best_particle.txt", global_best_position)
 
