@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-# Define the enemies and the number of runs
+# Define # enemies and runs
 enemies = [2, 5, 8]
 n_runs = 10
 
@@ -14,19 +14,19 @@ for enemy in enemies:
 
     # Load data for all 10 runs
     for run in range(1, n_runs + 1):
-        file_path = f'evoman_experiments/enemy_{enemy}/{run}/run_*_results.csv'  # Adjust the path pattern
+        file_path = f'evoman_experiments/enemy_{enemy}/{run}/run_*_results.csv' 
 
-        # Ensure we select the correct file in the run folder
+        # Ensure we select correct file
         matching_files = [f for f in os.listdir(f'evoman_experiments/enemy_{enemy}/{run}') if f.endswith('_results.csv')]
         if len(matching_files) != 1:
             print(f"Warning: Unexpected number of CSV files found in 'enemy_{enemy}/run_{run}'")
             continue
         
-        # Load the CSV file
+        # Load CSV
         file_path = f'evoman_experiments/enemy_{enemy}/{run}/{matching_files[0]}'
         df = pd.read_csv(file_path)
         
-        # Collect mean and max values for each generation
+        # Collect mean, max values for each generation
         mean_values_all_runs.append(df['MeanFitness'].values)
         max_values_all_runs.append(df['MaxFitness'].values)
 
@@ -34,7 +34,7 @@ for enemy in enemies:
     mean_values_all_runs = np.array(mean_values_all_runs)
     max_values_all_runs = np.array(max_values_all_runs)
 
-    # Calculate the average and standard deviation for each generation
+    # Calculate average, standard deviation for each generation
     mean_avg = np.mean(mean_values_all_runs, axis=0)
     mean_std = np.std(mean_values_all_runs, axis=0)
     max_avg = np.mean(max_values_all_runs, axis=0)
