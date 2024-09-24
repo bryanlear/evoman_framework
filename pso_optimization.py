@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import sys
+import pandas as pd 
 from evoman.environment import Environment
 from demo_controller import player_controller
 import time
@@ -12,9 +13,9 @@ if not os.path.exists(experiment_name):
 
 n_hidden_neurons = 10
 
-# Initialize EvoMan for PSO
+# EvoMan for PSO
 env = Environment(experiment_name=experiment_name,
-                  enemies=[8],
+                  enemies=[5],
                   playermode="ai",
                   player_controller=player_controller(n_hidden_neurons),
                   enemymode="static",
@@ -41,6 +42,11 @@ personal_best_positions = np.copy(particles)
 personal_best_fitness = np.full(n_particles, -np.inf)
 global_best_position = None
 global_best_fitness = -np.inf
+
+# To store statistics for all generations
+mean_fitness_list = []
+std_fitness_list = []
+max_fitness_list = []
 
 # Fitness function of particle (plays game with given weights)
 def evaluate(particle):
@@ -73,7 +79,7 @@ for iteration in range(n_iterations):
         # Update position
         particles[i] = particles[i] + velocities[i]
 
-        # Clip position within bounds [-1, 1]
+        # Set position within bounds [-1, 1]
         particles[i] = np.clip(particles[i], -1, 1)
 
     # Evaluate new fitness values
@@ -88,19 +94,37 @@ for iteration in range(n_iterations):
             global_best_fitness = fitness_values[i]
             global_best_position = particles[i]
     
-    
+    # Calculate mean, std dev, and max fitness for current generation
     mean_fitness = np.mean(fitness_values)
     std_fitness = np.std(fitness_values)
+    max_fitness = np.max(fitness_values)
 
-    # Print the mean and standard deviation for the current generation
-    print(f"Iteration {iteration + 1}/{n_iterations} - Mean fitness: {mean_fitness}, Std Dev: {std_fitness}")
+    # Store values for later analysis
+    mean_fitness_list.append(mean_fitness)
+    std_fitness_list.append(std_fitness)
+    max_fitness_list.append(max_fitness)
+
+    # Print mean, std dev, and max fitness for current generation
+    print(f"Iteration {iteration + 1}/{n_iterations} - Mean fitness: {mean_fitness}, Std Dev: {std_fitness}, Max fitness: {max_fitness}")
+
     # Save best solution so far
     np.savetxt(f"{experiment_name}/best_particle.txt", global_best_position)
 
 print("PSO optimization complete.")
 print(f"Best solution found with fitness: {global_best_fitness}")
 
-# Save final bestest solution
+# Save mean, std dev, and max fitness values to a CSV file for this run
+results_df = pd.DataFrame({
+    'Generation': np.arange(1, n_iterations + 1),
+    'MeanFitness': mean_fitness_list,
+    'StdDevFitness': std_fitness_list,
+    'MaxFitness': max_fitness_list
+})
+
+# Save results to CSV
+results_file_path = f"{experiment_name}/run_{time.time()}_results.csv"
+results_df.to_csv(results_file_path, index=False)
+print(f"Results saved to {results_file_path}")
+
+# Final best solution
 np.savetxt(f"{experiment_name}/final_best.txt", global_best_position)
-
-
