@@ -15,7 +15,7 @@ n_hidden_neurons = 10
 
 # EvoMan for PSO
 env = Environment(experiment_name=experiment_name,
-                  enemies=[6],
+                  enemies=[3],
                   playermode="ai",
                   player_controller=player_controller(n_hidden_neurons),
                   enemymode="static",
@@ -24,7 +24,7 @@ env = Environment(experiment_name=experiment_name,
                   visuals=False)
 
 # PSO parameters
-n_particles = 100   # Particles (population size)
+n_particles = 200   # Particles (population size)
 n_iterations = 30  # Iterations (generations)
 w = 0.6            # Inertia weight
 c1 = 1        # Cognitive (influence personal best)
