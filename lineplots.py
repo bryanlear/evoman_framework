@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Define # enemies and runs
-enemies = [2, 5, 8]
+enemies = [3, 6, 8]
 n_runs = 10
 
 # Iterate over each enemy

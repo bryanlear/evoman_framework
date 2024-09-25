@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 gains_data_pso = np.load('gains_data_pso.npy', allow_pickle=True).item()
 
 # Create box plots for each enemy
-enemies = [2, 5, 8]
+enemies = [3, 6, 8]
 
 for enemy in enemies:
     plt.figure(figsize=(8, 6))
