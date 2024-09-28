@@ -5,7 +5,7 @@ import os
 from evoman.environment import Environment
 
 n_runs = 10
-enemies = [3, 6, 8]
+enemies = [2, 5, 8]
 
 # Load the gain data
 gains_data = np.load('gains_data_pso.npy', allow_pickle=True).item()

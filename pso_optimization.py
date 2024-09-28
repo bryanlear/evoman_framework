@@ -11,7 +11,7 @@ experiment_name = 'pso_test'
 if not os.path.exists(experiment_name):
     os.makedirs(experiment_name)
 
-n_hidden_neurons = 15
+n_hidden_neurons = 10
 
 # EvoMan for PSO
 env = Environment(experiment_name=experiment_name,
@@ -27,7 +27,7 @@ env = Environment(experiment_name=experiment_name,
 n_particles = 100   # Particles (population size)
 n_iterations = 30  # Iterations (generations)
 w = 0.6            # Inertia weight
-c1 = 2        # Cognitive (influence personal best)
+c1 = 1        # Cognitive (influence personal best)
 c2 = 2         # Social (influence global best (swarm))
 
 # NN parameter size
