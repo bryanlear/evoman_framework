@@ -12,16 +12,6 @@ PARAMETER CHANGE: enemies = [2]
 
 PARAMETER CHANGE: enemies = [2]
 
-PARAMETER CHANGE: enemies = [2]
-
-PARAMETER CHANGE: enemies = [2]
-
-PARAMETER CHANGE: enemies = [2]
-
-PARAMETER CHANGE: enemies = [2]
-
-PARAMETER CHANGE: enemies = [2]
-
 PARAMETER CHANGE: enemies = [5]
 
 PARAMETER CHANGE: enemies = [5]
@@ -31,26 +21,6 @@ PARAMETER CHANGE: enemies = [5]
 PARAMETER CHANGE: enemies = [5]
 
 PARAMETER CHANGE: enemies = [5]
-
-PARAMETER CHANGE: enemies = [5]
-
-PARAMETER CHANGE: enemies = [5]
-
-PARAMETER CHANGE: enemies = [5]
-
-PARAMETER CHANGE: enemies = [5]
-
-PARAMETER CHANGE: enemies = [5]
-
-PARAMETER CHANGE: enemies = [8]
-
-PARAMETER CHANGE: enemies = [8]
-
-PARAMETER CHANGE: enemies = [8]
-
-PARAMETER CHANGE: enemies = [8]
-
-PARAMETER CHANGE: enemies = [8]
 
 PARAMETER CHANGE: enemies = [8]
 

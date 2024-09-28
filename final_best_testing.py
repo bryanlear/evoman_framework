@@ -12,7 +12,7 @@ if not os.path.exists(experiment_name):
 
 # Parameters
 n_hidden_neurons = 10
-n_runs = 10
+n_runs = 5
 enemies = [2, 5, 8]
 
 # EvoMan environment
