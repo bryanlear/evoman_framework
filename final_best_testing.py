@@ -25,7 +25,7 @@ env = Environment(experiment_name=experiment_name,
                   contacthurt="player", 
                   visuals=False) 
 
-# Define the function to calculate individual gain
+# Define the function to calculate individual 
 def calculate_individual_gain(player_energy, enemy_energy):
     return player_energy - enemy_energy
 
